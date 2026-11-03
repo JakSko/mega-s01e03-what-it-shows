@@ -28,8 +28,8 @@ three different fixes. Each one now has its own ticket.
 ## How to tell them apart
 
 - **Parser** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/1)): a day-first
-  tenant's date is read month first, so day and month trade places. Any channel except the
-  booking-v3 form.
+  tenant's date is read month first, so day and month trade places. Any channel: app, email, and
+  the form on tenants that do not run booking-v3.
 - **Form hint** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/2)): booking-v3
   prints `MM/DD/YYYY` under its date field, and people type what it says. Only through the form,
   only on booking-v3 tenants. The bodies read like parser reports; the channel and the form tell

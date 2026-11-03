@@ -30,6 +30,11 @@
       .sort((a, b) => b.count - a.count);
   });
   const sum = $derived(rows.reduce((n, r) => n + r.count, 0));
+
+  // The incident page's CauseTable counts the one-day moves under parser; say how the two tables meet.
+  const deskParser = $derived(merged.filter((r) => causeOf(r, tenantOf(r)) === 'parser'));
+  const movedOut = $derived(deskParser.filter((r) => notes.oneDayMove.includes(r.id)).length);
+  const parserHere = $derived(rows.find((r) => r.key === 'parser')?.count ?? 0);
 </script>
 
 <p class="sum">
@@ -61,6 +66,12 @@
   </tbody>
 </table>
 
+<p class="note">
+  The incident page counts <strong>{deskParser.length}</strong> reports under <code>parser</code>.
+  <strong>{movedOut}</strong> of them are the desk's one-day moves, which are their own problem here, so the
+  parser problem covers <strong>{parserHere}</strong>.
+</p>
+
 {#if sum !== merged.length}
   <p class="warn">The problems add up to {sum}, not {merged.length}: recount before you rely on this table.</p>
 {/if}
@@ -68,4 +79,5 @@
 <style>
   .sum { font-size: 1.1rem; }
   .warn { color: var(--warn); font-weight: 600; }
+  .note { color: var(--muted); font-size: 0.9em; }
 </style>
