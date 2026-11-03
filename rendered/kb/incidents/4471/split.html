@@ -3,39 +3,39 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../../../_app/immutable/bundle.ycZVi1dX.js" rel="modulepreload">
+    <link href="../../../_app/immutable/bundle.D6z4BqHf.js" rel="modulepreload">
 		<!--e2jw2j--><!----><title>#4471, split · three problems, three tickets · support kb</title>
 		<link href="../../../_app/immutable/assets/bundle.DKvt2_43.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471, split · three problems, three tickets</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Jakub Skowroński</b></span> <span class="status proposed svelte-e2jw2j">proposed</span> <span class="svelte-e2jw2j">reviewed 2026-11-03 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> was merged on subject lines (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>)
 and marked known: one issue, one fix queued. Read by cause, it holds three problems that need
-three different fixes. Each one now has its own ticket.</p> <aside class="warn svelte-17bri61"><!---->#4471 is not one issue. Fixing the parser leaves the form reports and the one-day reports wrong.<!----></aside><!----> <h2>The three problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems · each with its own ticket</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>channels</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td>parser reads day-first dates month first</td><td>374</td><td>11</td><td>app · email · form</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/1">JakSko/mega-s01e03-what-it-shows#1</a><!--]--></td></tr><tr><td>booking-v3 form hints MM/DD/YYYY</td><td>33</td><td>3</td><td>form</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/2">JakSko/mega-s01e03-what-it-shows#2</a><!--]--></td></tr><tr><td>date moves one day early</td><td>5</td><td>5</td><td>app · email</td><td>2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/3">JakSko/mega-s01e03-what-it-shows#3</a><!--]--></td></tr><!--]--></tbody></table> <p class="note svelte-1op6c6">The incident page counts <strong>379</strong> reports under <code>parser</code>. <strong>5</strong> of them are the desk's one-day moves, which are their own problem here, so the
-  parser problem covers <strong>374</strong>.</p> <!--[-1--><!--]--><!----> <h2>How to tell them apart</h2> <ul><li><strong>Parser</strong> (<a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/1" rel="nofollow">ticket</a>): a day-first
-tenant’s date is read month first, so day and month trade places. Any channel: app, email, and
-the form on tenants that do not run booking-v3.</li> <li><strong>Form hint</strong> (<a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/2" rel="nofollow">ticket</a>): booking-v3
-prints <code>MM/DD/YYYY</code> under its date field, and people type what it says. Only through the form,
-only on booking-v3 tenants. The bodies read like parser reports; the channel and the form tell
-them apart.</li> <li><strong>One day early</strong> (<a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/3" rel="nofollow">ticket</a>): the
-weekday is off by one, or two time zones see two days. No day and month swap. The desk already
-had these as one-day moves in <code>desk-notes.json</code>.</li></ul> <h2>How this was counted</h2> <p>Every report in <code>reports-4471.json</code>, once per id (the export pages overlap). The cause comes from
-the tenant’s locale, booking form and channel (<code>causes.ts</code>), not from the subject line or the intake
-tag; the desk’s one-day moves are taken out as their own problem. Then the bodies were read: each
-names a booked date and a shown date that fit its problem. One report on the one-day list has no
-dates; it stays there on the desk’s reading.</p> <h2>Data</h2> <p>Built from the export of 2026-10-04 (<code>src/lib/data/reports-4471.json</code>) at render time. If the desk
-merges more reports into #4471, the table changes with them; each ticket keeps the count of the day
-it was filed.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-1E28-7318</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+three different fixes. Each one has its own ticket.</p> <aside class="warn svelte-17bri61"><!---->#4471 was not one issue. The parser fix leaves the one-day reports wrong: that ticket is still open.<!----></aside><!----> <h2>The three problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems · each with its own ticket</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>channels</th><th>seen</th><th>ticket</th><th>status</th></tr></thead><tbody><!--[--><tr><td>parser reads day-first dates month first</td><td>379</td><td>11</td><td>app · email · form</td><td>2026-04-01 → 2026-10-04</td><td><a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/1">JakSko/mega-s01e03-what-it-shows#1</a></td><td>fixed</td></tr><tr><td>booking-v3 form hints MM/DD/YYYY</td><td>33</td><td>3</td><td>form</td><td>2026-04-17 → 2026-09-22</td><td><a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/2">JakSko/mega-s01e03-what-it-shows#2</a></td><td>won't fix</td></tr><tr><td>date moves one day early</td><td>5*</td><td>5</td><td>app · email</td><td>2026-04-02 → 2026-10-04</td><td><a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/3">JakSko/mega-s01e03-what-it-shows#3</a></td><td>open</td></tr><!--]--></tbody></table> <p class="note svelte-1op6c6">* Counted the desk's way, as exported: the <strong>5</strong> one-day reports are also counted under <code>parser</code> (5 of them), where the desk files them by tenant, and footnoted here as their own problem.</p> <!--[-1--><!--]--><!----> <h2>Where each one stands</h2> <p>The desk closed #4471 on 5 October with an engineering update:</p> <ul><li><strong>Parser</strong> (<a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/1" rel="nofollow">ticket</a>, closed):
+fixed, “fix(dates): parse dd/mm for eu locales”.</li> <li><strong>Form hint</strong> (<a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/2" rel="nofollow">ticket</a>, closed):
+won’t fix, “booking-v3 form retired”.</li> <li><strong>One day early</strong> (<a href="https://github.com/JakSko/mega-s01e03-what-it-shows/issues/3" rel="nofollow">ticket</a>, open):
+not in the update. Reading dates day first does not change a date that moves by one day, so these
+reports stay open.</li></ul> <h2>How to tell them apart</h2> <ul><li><strong>Parser</strong>: a day-first tenant’s date is read month first, so day and month trade places. Any
+channel: app, email, and the form on tenants that do not run booking-v3.</li> <li><strong>Form hint</strong>: booking-v3 prints <code>MM/DD/YYYY</code> under its date field, and people type what it says.
+Only through the form, only on booking-v3 tenants. The bodies read like parser reports; the channel
+and the form tell them apart.</li> <li><strong>One day early</strong>: the weekday is off by one, or two time zones see two days. No day and month
+swap. The desk already had these as one-day moves in <code>desk-notes.json</code>.</li></ul> <h2>How this was counted</h2> <p>Every report in <code>reports-4471.json</code>, once per id (the export pages overlap), counted the desk’s way:
+each report under the cause it is filed by (<code>causes.ts</code>: tenant locale, booking form and channel, not
+the subject line or the intake tag), and the desk’s one-day moves also as their own problem,
+footnoted, as the desk does on the incident page. Then the bodies were read: each names a booked date
+and a shown date that fit its problem. One report on the one-day list has no dates; it stays there on
+the desk’s reading.</p> <h2>Data</h2> <p>Built from the export of 2026-10-04 (<code>src/lib/data/reports-4471.json</code>) at render time; the status
+column is the desk’s engineering update of 5 October.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-1E28-7318</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_12bx4n = {
+					__sveltekit_13iq9v6 = {
 						base: new URL("../../..", location).pathname.slice(0, -1),
-						version: "1793734638146"
+						version: "1793735988210"
 					};
 
 					const element = document.currentScript.parentElement;
 
-					import("../../../_app/immutable/bundle.ycZVi1dX.js").then((app) => {
+					import("../../../_app/immutable/bundle.D6z4BqHf.js").then((app) => {
 						app.start(element, {
 							node_ids: [0, 5],
 							data: [null,null],

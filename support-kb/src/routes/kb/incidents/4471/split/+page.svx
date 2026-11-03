@@ -15,41 +15,55 @@ signature: Jakub Skowroński
 
 [#4471](/kb/incidents/4471) was merged on subject lines ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
 and marked known: one issue, one fix queued. Read by cause, it holds three problems that need
-three different fixes. Each one now has its own ticket.
+three different fixes. Each one has its own ticket.
 
 <Callout kind="warn">
-#4471 is not one issue. Fixing the parser leaves the form reports and the one-day reports wrong.
+#4471 was not one issue. The parser fix leaves the one-day reports wrong: that ticket is still open.
 </Callout>
 
 ## The three problems
 
-<ProblemTable ticket={4471} repo="JakSko/mega-s01e03-what-it-shows" issues={{ parser: 1, hint: 2, 'one-day': 3 }} />
+<ProblemTable
+  ticket={4471}
+  repo="JakSko/mega-s01e03-what-it-shows"
+  issues={{ parser: 1, hint: 2, 'one-day': 3 }}
+  status={{ parser: 'fixed', hint: "won't fix", 'one-day': 'open' }}
+/>
+
+## Where each one stands
+
+The desk closed #4471 on 5 October with an engineering update:
+
+- **Parser** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/1), closed):
+  fixed, "fix(dates): parse dd/mm for eu locales".
+- **Form hint** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/2), closed):
+  won't fix, "booking-v3 form retired".
+- **One day early** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/3), open):
+  not in the update. Reading dates day first does not change a date that moves by one day, so these
+  reports stay open.
 
 ## How to tell them apart
 
-- **Parser** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/1)): a day-first
-  tenant's date is read month first, so day and month trade places. Any channel: app, email, and
-  the form on tenants that do not run booking-v3.
-- **Form hint** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/2)): booking-v3
-  prints `MM/DD/YYYY` under its date field, and people type what it says. Only through the form,
-  only on booking-v3 tenants. The bodies read like parser reports; the channel and the form tell
-  them apart.
-- **One day early** ([ticket](https://github.com/JakSko/mega-s01e03-what-it-shows/issues/3)): the
-  weekday is off by one, or two time zones see two days. No day and month swap. The desk already
-  had these as one-day moves in `desk-notes.json`.
+- **Parser**: a day-first tenant's date is read month first, so day and month trade places. Any
+  channel: app, email, and the form on tenants that do not run booking-v3.
+- **Form hint**: booking-v3 prints `MM/DD/YYYY` under its date field, and people type what it says.
+  Only through the form, only on booking-v3 tenants. The bodies read like parser reports; the channel
+  and the form tell them apart.
+- **One day early**: the weekday is off by one, or two time zones see two days. No day and month
+  swap. The desk already had these as one-day moves in `desk-notes.json`.
 
 ## How this was counted
 
-Every report in `reports-4471.json`, once per id (the export pages overlap). The cause comes from
-the tenant's locale, booking form and channel (`causes.ts`), not from the subject line or the intake
-tag; the desk's one-day moves are taken out as their own problem. Then the bodies were read: each
-names a booked date and a shown date that fit its problem. One report on the one-day list has no
-dates; it stays there on the desk's reading.
+Every report in `reports-4471.json`, once per id (the export pages overlap), counted the desk's way:
+each report under the cause it is filed by (`causes.ts`: tenant locale, booking form and channel, not
+the subject line or the intake tag), and the desk's one-day moves also as their own problem,
+footnoted, as the desk does on the incident page. Then the bodies were read: each names a booked date
+and a shown date that fit its problem. One report on the one-day list has no dates; it stays there on
+the desk's reading.
 
 ## Data
 
-Built from the export of 2026-10-04 (`src/lib/data/reports-4471.json`) at render time. If the desk
-merges more reports into #4471, the table changes with them; each ticket keeps the count of the day
-it was filed.
+Built from the export of 2026-10-04 (`src/lib/data/reports-4471.json`) at render time; the status
+column is the desk's engineering update of 5 October.
 
 <RenderStamp {signature} />
